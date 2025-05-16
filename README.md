@@ -4,19 +4,15 @@ A basic monitoring infrastructure using Prometheus and Node Exporter running wit
 
 ## Architecture
 
-Host System
-    │
-    ▼
-Node Exporter (9100) ──── exposes metrics ────┐
-                                              │
-                                              ▼
-                                      Prometheus Server (9090)
-                                              │
-                                              │
-                                              ▼
-                                       Prometheus UI
-                                    (Query & Visualize)
-
+graph TD
+    A[Host System] --> B[Node Exporter\n:9100]
+    B -- exposes metrics --> C[Prometheus Server\n:9090]
+    C --> D[Prometheus UI\nQuery & Visualize]
+    
+    style A fill:#f9f9f9,stroke:#333,stroke-width:2px
+    style B fill:#dff0d8,stroke:#4cae4c,stroke-width:2px
+    style C fill:#d9edf7,stroke:#31708f,stroke-width:2px
+    style D fill:#fcf8e3,stroke:#8a6d3b,stroke-width:2px
 
 - **Host System** : The underlying system being monitored
 - **Node Exporter** : Collects system metrics (CPU, memory, disk, network)
