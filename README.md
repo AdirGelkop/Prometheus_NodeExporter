@@ -5,8 +5,8 @@ A basic monitoring infrastructure using Prometheus and Node Exporter running wit
 ## Architecture
 ```mermaid
 graph TD
-    A[Host System] --> B[Node Exporter (:9100)]
-    B -- exposes metrics --> C[Prometheus Server (:9090)]
+    A[Host System] --> B[Node Exporter :9100]
+    B -- exposes metrics --> C[Prometheus Server :9090]
     C --> D[Prometheus UI - Query & Visualize]
     
     style A fill:#f9f9f9,stroke:#333,stroke-width:2px
