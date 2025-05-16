@@ -4,26 +4,25 @@ A basic monitoring infrastructure using Prometheus and Node Exporter running wit
 
 ## Architecture
 
-┌─────────────────┐           ┌─────────────────┐
-│                 │  scrapes  │                 │
-│   Prometheus    │◄──────────┤  Node Exporter  │
-│    Server       │   metrics │    (9100)       │
-│    (9090)       │           │                 │
-└────────┬────────┘           └────────┬────────┘
-         │                             │
-         │                             │
-         │                             │
-         │                             │
-         ▼                             ▼
-┌─────────────────────────┐    ┌────────────────────┐
-│                         │    │                    │
-│    Prometheus UI        │    │    Host System     │
-│  (Query & Visualize)    │    │   (CPU/Mem/Disk)   │
-│                         │    │                    │
-└─────────────────────────┘    └────────────────────┘
+Host System
+    │
+    ▼
+Node Exporter (9100) ──── exposes metrics ────┐
+                                              │
+                                              ▼
+                                      Prometheus Server (9090)
+                                              │
+                                              │
+                                              ▼
+                                       Prometheus UI
+                                    (Query & Visualize)
 
-- **Prometheus Server**: Central database that collects and stores metrics
-- **Node Exporter**: Collects system metrics (CPU, memory, disk, network)
+
+- **Host System** : The underlying system being monitored
+- **Node Exporter** : Collects system metrics (CPU, memory, disk, network)
+- **Prometheus Server** : Scrapes and stores metrics from Node Exporter
+- **Prometheus UI** : Web interface for querying and visualizing the collected metrics
+
 
 The components work together:
 - Node Exporter exposes metrics on port 9100
