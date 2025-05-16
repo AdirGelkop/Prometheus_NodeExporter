@@ -4,7 +4,23 @@ A basic monitoring infrastructure using Prometheus and Node Exporter running wit
 
 ## Architecture
 
-![Prometheus Architecture](https://i.imgur.com/GVQVP0q.png)
+┌─────────────────┐           ┌─────────────────┐
+│                 │  scrapes  │                 │
+│   Prometheus    │◄──────────┤  Node Exporter  │
+│    Server       │   metrics │    (9100)       │
+│    (9090)       │           │                 │
+└────────┬────────┘           └────────┬────────┘
+         │                             │
+         │                             │
+         │                             │
+         │                             │
+         ▼                             ▼
+┌─────────────────────────┐    ┌────────────────────┐
+│                         │    │                    │
+│    Prometheus UI        │    │    Host System     │
+│  (Query & Visualize)    │    │   (CPU/Mem/Disk)   │
+│                         │    │                    │
+└─────────────────────────┘    └────────────────────┘
 
 - **Prometheus Server**: Central database that collects and stores metrics
 - **Node Exporter**: Collects system metrics (CPU, memory, disk, network)
