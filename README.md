@@ -3,7 +3,7 @@
 A basic monitoring infrastructure using Prometheus and Node Exporter running with Docker Compose.
 
 ## Architecture
-
+```mermaid
 graph TD
     A[Host System] --> B[Node Exporter\n:9100]
     B -- exposes metrics --> C[Prometheus Server\n:9090]
@@ -13,6 +13,7 @@ graph TD
     style B fill:#dff0d8,stroke:#4cae4c,stroke-width:2px
     style C fill:#d9edf7,stroke:#31708f,stroke-width:2px
     style D fill:#fcf8e3,stroke:#8a6d3b,stroke-width:2px
+```
 
 - **Host System** : The underlying system being monitored
 - **Node Exporter** : Collects system metrics (CPU, memory, disk, network)
